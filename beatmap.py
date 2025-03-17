@@ -1,8 +1,12 @@
 import math
 
 class Beatmap:
-    def __init__(self, circle_size=5):
-        self.circle_size = circle_size
+    def __init__(self, difficulty):
+        self.circle_size = difficulty.get("CircleSize", 4)
+        self.hp_drain = difficulty.get("HPDrainRate", 2)
+        self.overall_difficulty = difficulty.get("OverallDifficulty", 8)
+        self.approach_rate = difficulty.get("ApproachRate", 9)
+
         self.skipped_bpms = set()   # BPM values to exclude
         self.streams = []           # Each stream is a dict with keys 'length' and 'spacing'
         self.longest_stream = 0
